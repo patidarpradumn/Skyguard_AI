@@ -1,0 +1,45 @@
+# SkyGuard AI - Physical Constants & Meteorological Validation Thresholds
+# Standard: WMO-No. 8 (Guide to Meteorological Instruments and Methods of Observation)
+
+constants:
+  standard_sea_level_pressure_hpa: 1013.25
+  specific_gas_constant_dry_air_j_kg_k: 287.058
+  specific_heat_dry_air_cp_j_kg_k: 1005.0
+  poisson_kappa: 0.2857142857 # R / cp (287.058 / 1005.0)
+  water_vapor_gas_constant_j_kg_k: 461.5
+  triple_point_temp_k: 273.16
+  latent_heat_vaporization_j_kg: 2.501e6
+
+# Magnus-Tetens Equation Constants (Bolton 1980 / Alduchov and Eskridge 1996)
+magnus_tetens:
+  water:
+    a: 6.112 # hPa
+    b: 17.67
+    c: 243.5 # °C
+  ice:
+    a: 6.112 # hPa
+    b: 22.46
+    c: 272.62 # °C
+
+# Operational Physical Limits (IMD/WMO Climatic Range Limits for India)
+hard_limits:
+  temperature:
+    min_c: -40.0   # High altitude Himalayan stations (e.g. Leh, Dras)
+    max_c: 60.0    # Extreme desert stations (e.g. Phalodi, Rajasthan)
+    max_rate_c_per_min: 1.0     # Maximum plausible continuous rate
+    max_rate_c_per_15min: 8.0   # Squall line / cold front threshold
+  pressure:
+    min_hpa: 500.0 # High altitude stations (~5500m)
+    max_hpa: 1080.0# Super high sea-level ridge
+    max_rate_hpa_per_15min: 6.0 # Extreme cyclonic rapid drop
+  relative_humidity:
+    min_pct: 1.0   # Arid desert boundary
+    max_pct: 100.0 # Saturation
+    max_rate_pct_per_15min: 40.0 # Sudden squall / frontal passage
+
+# Invariant Rules
+invariants:
+  dew_point_must_be_less_than_or_equal_to_temp: true
+  vapor_pressure_deficit_must_be_non_negative: true
+  relative_humidity_bounds_pct: [0.0, 100.0]
+  potential_temperature_bounds_k: [200.0, 450.0]

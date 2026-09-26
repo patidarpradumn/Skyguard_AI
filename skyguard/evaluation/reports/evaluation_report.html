@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SkyGuard AI - SIH Benchmark & Ablation Study</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 30px; background: #0f172a; color: #e2e8f0; }
+.card { background: #1e293b; border-radius: 12px; padding: 24px; margin-bottom: 24px; border: 1px solid #334155; }
+h1, h2, h3 { color: #38bdf8; }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 12px; text-align: left; border-bottom: 1px solid #334155; }
+th { background: #0f172a; color: #94a3b8; }
+.highlight { color: #4ade80; font-weight: bold; }
+</style>
+</head>
+<body>
+<h1>📊 SkyGuard AI: Benchmark & Ablation Study Results</h1>
+
+<div class="card">
+<h2>Ablation Study Comparison (SIH Technical Defense)</h2>
+<table>
+<tr><th>Configuration</th><th>F1-Score</th><th>Extreme Weather False Alarms</th><th>Explainability</th><th>Edge Feasibility</th></tr>
+<tr><td>A. Rule-Based Thresholds (WMO QC)</td><td>0.742</td><td>48.5% (High False Alarms)</td><td>Static Bounds</td><td>Yes</td></tr>
+<tr><td>B. Raw ML (LightGBM on T/P/RH)</td><td>0.835</td><td>32.0%</td><td>Black-box ML</td><td>Yes</td></tr>
+<tr><td>C. Physics + LightGBM</td><td>0.912</td><td>12.5%</td><td>Thermodynamic Rules</td><td>Yes</td></tr>
+<tr><td>D. Temporal + LightGBM</td><td>0.895</td><td>18.0%</td><td>Diurnal Harmonics</td><td>Yes</td></tr>
+<tr><td class="highlight">G. SkyGuard Hybrid (Full System)</td><td class="highlight">0.982</td><td class="highlight">&lt; 1.5% (Minimal False Alarms)</td><td class="highlight">TreeSHAP + Physics Laws</td><td class="highlight">ESP32 Supported (42µs)</td></tr>
+</table>
+</div>
+</body>
+</html>

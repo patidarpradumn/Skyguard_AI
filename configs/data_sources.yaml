@@ -1,0 +1,71 @@
+# SkyGuard AI - Data Sources Specification & Provenance Configuration
+# Conforms to SIH26073 Requirements
+
+sources:
+  imd_aws:
+    name: "India Meteorological Department Automatic Weather Station Network"
+    provider: "IMD / Ministry of Earth Sciences, Govt of India"
+    portal_url: "https://dsp.imdpune.gov.in/"
+    secondary_url: "http://aws.imd.gov.in/"
+    role: "PRIMARY_EVALUATION"
+    access_method: "REST API / Authorized CSV download / Token Auth"
+    variables:
+      raw:
+        - "temperature_c"
+        - "pressure_hpa"
+        - "relative_humidity_pct"
+      metadata:
+        - "timestamp_utc"
+        - "station_id"
+        - "latitude"
+        - "longitude"
+        - "elevation_m"
+    resolution_minutes: 15
+    geographic_coverage: "Pan-India (Over 700 AWS/ARG stations)"
+    provenance_tag: "IMD_AWS"
+    access_notes: "Authentication required for production feed; system uses standardized adapter interface."
+
+  noaa_isd:
+    name: "NOAA Integrated Surface Database (ISD)"
+    provider: "NOAA National Centers for Environmental Information (NCEI)"
+    portal_url: "https://www.ncei.noaa.gov/products/land-based-station/integrated-surface-database"
+    role: "SECONDARY_BENCHMARK"
+    access_method: "Direct Open Access HTTP / FTP tarballs"
+    variables:
+      raw:
+        - "air_temperature"
+        - "sea_level_pressure"
+        - "dew_point_temperature"
+        - "relative_humidity_derived"
+      metadata:
+        - "usaf_wban_id"
+        - "latitude"
+        - "longitude"
+        - "elevation_m"
+        - "timestamp_utc"
+    resolution_minutes: 60
+    geographic_coverage: "Global surface observations (35,000+ stations)"
+    provenance_tag: "NOAA_ISD"
+
+  era5_reanalysis:
+    name: "ECMWF Copernicus ERA5 Global Reanalysis"
+    provider: "Copernicus Climate Change Service (C3S)"
+    portal_url: "https://cds.climate.copernicus.eu/"
+    role: "CLIMATOLOGICAL_REFERENCE_ONLY"
+    access_method: "CDS API (ECMWF credentials required)"
+    variables:
+      reference:
+        - "2m_temperature"
+        - "surface_pressure"
+        - "2m_dewpoint_temperature"
+    resolution_minutes: 60
+    geographic_coverage: "Global 0.25° grid"
+    provenance_tag: "ERA5"
+    usage_constraint: "Used strictly for climatological baselines and geographic priors; never represented as direct AWS sensor ground truth."
+
+  synthetic_generator:
+    name: "SkyGuard High-Fidelity Physical AWS Simulator"
+    provider: "SkyGuard Internal Physics Engine"
+    role: "CONTROLLED_BENCHMARK_AND_INJECTION"
+    provenance_tag: "SYNTHETIC"
+    physics_fidelity: "Thermodynamically coupled diurnal cycle with stochastic atmospheric turbulence"

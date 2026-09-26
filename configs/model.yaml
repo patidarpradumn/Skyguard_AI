@@ -1,0 +1,58 @@
+# SkyGuard AI - Model Configurations & Hyperparameters
+
+models:
+  lightgbm:
+    objective: "multiclass"
+    num_class: 8
+    boosting_type: "gbdt"
+    metric: "multi_logloss"
+    learning_rate: 0.05
+    num_leaves: 31
+    max_depth: 6
+    min_child_samples: 20
+    feature_fraction: 0.85
+    bagging_fraction: 0.80
+    bagging_freq: 5
+    n_estimators: 300
+    random_state: 42
+    class_names:
+      0: "NORMAL"
+      1: "GENUINE_EXTREME_WEATHER"
+      2: "SPIKE"
+      3: "FROZEN"
+      4: "DRIFT"
+      5: "COMMUNICATION_ERROR"
+      6: "CORRUPTED_DATA"
+      7: "OTHER_SENSOR_FAULT"
+
+  isolation_forest:
+    n_estimators: 150
+    max_samples: "auto"
+    contamination: 0.05
+    random_state: 42
+
+  rule_detector:
+    temp_rate_threshold_15min_c: 6.0
+    pressure_rate_threshold_15min_hpa: 4.0
+    humidity_rate_threshold_15min_pct: 30.0
+    frozen_consecutive_samples: 8
+    dew_point_violation_margin_c: 0.1
+
+  kalman_imputation:
+    process_noise_temp: 0.05
+    process_noise_pressure: 0.02
+    process_noise_humidity: 0.10
+    measurement_noise_temp: 0.20
+    measurement_noise_pressure: 0.10
+    measurement_noise_humidity: 1.00
+
+  fusion:
+    method: "calibrated_logistic"
+    weights:
+      physics_score: 0.30
+      temporal_score: 0.25
+      multivariate_score: 0.25
+      spatial_score: 0.15
+      quality_score: 0.05
+    threshold_alert: 0.70
+    threshold_critical: 0.90

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SkyGuard AI - Dataset Provenance & Data Quality Report</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 30px; background: #0f172a; color: #e2e8f0; }
+.card { background: #1e293b; border-radius: 12px; padding: 24px; margin-bottom: 24px; border: 1px solid #334155; }
+h1, h2, h3 { color: #38bdf8; }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 12px; text-align: left; border-bottom: 1px solid #334155; }
+th { background: #0f172a; color: #94a3b8; }
+.badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: bold; }
+.badge-blue { background: #0369a1; color: #bae6fd; }
+.badge-green { background: #15803d; color: #bbf7d0; }
+</style>
+</head>
+<body>
+<h1>🛡️ SkyGuard AI: Dataset Provenance & QC Audit Report</h1>
+<p>Strict Raw Input Constraint: <strong>Temperature (°C), Pressure (hPa), Relative Humidity (%) ONLY</strong></p>
+
+<div class="card">
+<h2>Data Source Provenance Directory</h2>
+<table>
+<tr><th>Provenance Tag</th><th>Source Organization</th><th>Portal / Access URL</th><th>Role in System</th><th>Status</th></tr>
+<tr><td><span class="badge badge-blue">IMD_AWS</span></td><td>India Meteorological Department / MoES</td><td>https://dsp.imdpune.gov.in/</td><td>Primary Production & Validation</td><td><span class="badge badge-green">Standardized Adapter</span></td></tr>
+<tr><td><span class="badge badge-blue">NOAA_ISD</span></td><td>NOAA NCEI Integrated Surface Database</td><td>https://www.ncei.noaa.gov/</td><td>Global Secondary Benchmark</td><td><span class="badge badge-green">Operational</span></td></tr>
+<tr><td><span class="badge badge-blue">ERA5</span></td><td>ECMWF Copernicus Climate Service</td><td>https://cds.climate.copernicus.eu/</td><td>Climatological Baseline Reference Only</td><td><span class="badge badge-green">Restricted Reference</span></td></tr>
+<tr><td><span class="badge badge-blue">SYNTHETIC</span></td><td>SkyGuard Physical Diurnal Generator</td><td>Internal Deterministic Physics Engine</td><td>Controlled Fault & Extreme Simulation</td><td><span class="badge badge-green">26 Modes</span></td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>Data Quality & Preprocessing Statistics</h2>
+<ul>
+<li><strong>Unit Standardization:</strong> Forced °C, hPa, % with explicit telemetry sentinels (-999.0) cleaning.</li>
+<li><strong>Physical Bound Checks:</strong> -40°C to 60°C (Temp), 500 to 1080 hPa (Pressure), 0% to 100% (RH).</li>
+<li><strong>Sampling Resolution:</strong> 15-minute standard synoptic interval supported.</li>
+</ul>
+</div>
+</body>
+</html>

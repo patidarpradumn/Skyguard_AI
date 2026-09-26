@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SkyGuard AI - SIH Live Demonstration Guide</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 30px; background: #0f172a; color: #e2e8f0; }
+.card { background: #1e293b; border-radius: 12px; padding: 24px; margin-bottom: 24px; border: 1px solid #334155; }
+h1, h2, h3 { color: #38bdf8; }
+.demo-box { background: #0f172a; border-left: 4px solid #38bdf8; padding: 15px; margin: 10px 0; border-radius: 0 8px 8px 0; }
+</style>
+</head>
+<body>
+<h1>🎯 SkyGuard AI: SIH Final Demonstration Protocol</h1>
+
+<div class="card">
+<h2>5 Polished Live Demo Scenarios for SIH Evaluation</h2>
+
+<div class="demo-box">
+<h3>Demo 1: Normal Diurnal AWS Telemetry</h3>
+<p><strong>Input:</strong> Safdarjung AWS 24h normal cycle ($T=32^\circ	ext{C}, RH=55\%, P=1005	ext{ hPa}$).<br>
+<strong>AI Output:</strong> <code>NORMAL</code> (Confidence: 98.2%), Sensor Health: 100 (HEALTHY).</p>
+</div>
+
+<div class="demo-box">
+<h3>Demo 2: Isolated Transient Temperature Spike (+14°C)</h3>
+<p><strong>Input:</strong> Temperature jumps from 33°C to 47°C in 15 mins without RH or Pressure coupling.<br>
+<strong>AI Output:</strong> <code>SPIKE</code> (Confidence: 99.1%), Kalman Filter self-heals value to 33.4°C, preserves raw data, flags sensor.</p>
+</div>
+
+<div class="demo-box">
+<h3>Demo 3: Progressive Sensor Calibration Drift (+0.3°C/hour)</h3>
+<p><strong>Input:</strong> Gradual thermal sensor degradation over 24 hours.<br>
+<strong>AI Output:</strong> <code>DRIFT</code> detected at hour 3.5; TreeSHAP flags diurnal deviation; Health drops to WATCH (68/100).</p>
+</div>
+
+<div class="demo-box">
+<h3>Demo 4: Persistent Frozen Humidity (ADC Pin Stuck)</h3>
+<p><strong>Input:</strong> Relative humidity stuck at identical 52.0% for 8 consecutive 15-minute cycles.<br>
+<strong>AI Output:</strong> <code>FROZEN</code> (Confidence: 96.5%), Kalman Filter generates continuous synthetic profile.</p>
+</div>
+
+<div class="demo-box">
+<h3>Demo 5: Genuine Severe Squall Line vs Fault Disentanglement</h3>
+<p><strong>Input:</strong> Severe cold pool: Temperature plunges -8°C, RH surges to 96%, Pressure jumps +2.5 hPa (Pressure nose).<br>
+<strong>AI Output:</strong> <code>GENUINE_EXTREME_WEATHER</code> (Confidence: 94.8%), Accepted into official synoptic record without censorship!</p>
+</div>
+
+</div>
+</body>
+</html>

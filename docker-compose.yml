@@ -1,0 +1,22 @@
+services:
+  skyguard-sentinel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: skyguard-ai:latest
+    container_name: skyguard_ai_server
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - HOST=0.0.0.0
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./skyguard/data:/app/skyguard/data
+      - ./dashboard:/app/dashboard
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/metrics"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

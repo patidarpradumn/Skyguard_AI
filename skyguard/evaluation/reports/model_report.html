@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SkyGuard AI - Model Architecture & TreeSHAP Report</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 30px; background: #0f172a; color: #e2e8f0; }
+.card { background: #1e293b; border-radius: 12px; padding: 24px; margin-bottom: 24px; border: 1px solid #334155; }
+h1, h2, h3 { color: #38bdf8; }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 12px; text-align: left; border-bottom: 1px solid #334155; }
+th { background: #0f172a; color: #94a3b8; }
+.badge-green { background: #15803d; color: #bbf7d0; padding: 4px 8px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<h1>🧠 SkyGuard AI: Model Architecture & Explainability Report</h1>
+
+<div class="card">
+<h2>Multi-Class Fault Taxonomy (8 Operational States)</h2>
+<table>
+<tr><th>Class ID</th><th>Label</th><th>Description</th><th>Operational AI Action</th></tr>
+<tr><td>0</td><td>NORMAL</td><td>Standard diurnal meteorology</td><td>Accept observation</td></tr>
+<tr><td>1</td><td>GENUINE_EXTREME_WEATHER</td><td>Physically coherent heatwaves, severe squalls, depressions</td><td>Accept into climate record, alert forecast desk</td></tr>
+<tr><td>2</td><td>SPIKE</td><td>Transient single/multi-sample hardware spike</td><td>Reject raw, apply Kalman self-healing filter</td></tr>
+<tr><td>3</td><td>FROZEN</td><td>Stuck ADC value / persistent frozen telemetry</td><td>Activate state-space prediction, trigger watch</td></tr>
+<tr><td>4</td><td>DRIFT</td><td>Slow progressive transducer calibration bias</td><td>Apply continuous bias correction</td></tr>
+<tr><td>5</td><td>COMMUNICATION_ERROR</td><td>Packet drops, burst loss, link failure</td><td>Forward continuous Kalman state estimate</td></tr>
+<tr><td>6</td><td>CORRUPTED_DATA</td><td>Sentinels, bit flips, physical invariant violations</td><td>Reject observation, log corruption</td></tr>
+<tr><td>7</td><td>OTHER_SENSOR_FAULT</td><td>ADC staircase, multi-sensor concurrent faults</td><td>Impute and dispatch technician ticket</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>TreeSHAP Attribution & Physics Invariant Fusion</h2>
+<p>Every prediction is decomposed into exact polynomial-time SHAP feature attributions combined with deterministic psychrometric invariants (Magnus-Tetens Dew Point $T_d \le T$, VPD $\ge 0$).</p>
+</div>
+</body>
+</html>

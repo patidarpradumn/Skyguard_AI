@@ -1,0 +1,113 @@
+# SkyGuard AI - Anomaly Simulator Configuration (26 Anomaly Modes)
+
+anomalies:
+  # 1-4: Spikes
+  positive_spike:
+    params: ["temperature", "pressure", "humidity"]
+    magnitudes: {temperature: [5.0, 10.0, 20.0], pressure: [10.0, 25.0], humidity: [20.0, 45.0]}
+    duration_samples: [1, 2, 3]
+
+  negative_spike:
+    params: ["temperature", "pressure", "humidity"]
+    magnitudes: {temperature: [-5.0, -12.0, -25.0], pressure: [-10.0, -30.0], humidity: [-25.0, -50.0]}
+    duration_samples: [1, 2, 3]
+
+  random_spike:
+    params: ["temperature", "pressure", "humidity"]
+    noise_std_multiplier: [3.0, 6.0, 10.0]
+
+  multiple_spikes:
+    frequency_per_100_samples: [2, 5, 10]
+    duration_samples: [1, 2]
+
+  # 5-7: Frozen Sensors
+  frozen_temperature:
+    duration_samples: [6, 12, 24, 48] # 1.5h to 12h
+    variance_allowed: 0.0
+
+  frozen_pressure:
+    duration_samples: [8, 16, 32, 64]
+    variance_allowed: 0.0
+
+  frozen_humidity:
+    duration_samples: [6, 12, 24, 48]
+    variance_allowed: 0.0
+
+  # 8-10: Sensor Drift
+  temperature_drift:
+    drift_rate_c_per_hour: [0.3, 0.7, 1.5]
+    duration_hours: [12, 24, 48]
+
+  pressure_drift:
+    drift_rate_hpa_per_hour: [0.2, 0.5, 1.0]
+    duration_hours: [12, 24, 48]
+
+  humidity_drift:
+    drift_rate_pct_per_hour: [1.0, 2.5, 5.0]
+    duration_hours: [12, 24, 48]
+
+  # 11-12: Bias
+  sudden_sensor_bias:
+    offsets: {temperature: [4.0, 8.0], pressure: [8.0, 15.0], humidity: [15.0, 30.0]}
+
+  gradual_sensor_bias:
+    ramp_duration_samples: [10, 20, 40]
+    target_offset: {temperature: 6.0, pressure: 10.0, humidity: 25.0}
+
+  # 13-14: Stuck Limits
+  humidity_stuck_near_zero:
+    pinned_value: [0.0, 0.5, 1.0]
+    duration_samples: [8, 24, 96]
+
+  humidity_stuck_near_hundred:
+    pinned_value: [99.5, 100.0, 100.5]
+    duration_samples: [8, 24, 96]
+
+  # 15-16: Physical Inconsistencies
+  physically_inconsistent_t_rh:
+    type: "dewpoint_exceeds_temp"
+    temp_shift_c: -10.0
+    humidity_pinned_pct: 98.0
+
+  physically_inconsistent_pressure:
+    type: "instantaneous_barometric_jump"
+    jump_hpa: 25.0
+
+  # 17-19: Communication & Packet Loss
+  missing_packets:
+    drop_probability: [0.05, 0.15, 0.30]
+
+  burst_packet_loss:
+    burst_length_samples: [4, 8, 16]
+
+  communication_outage:
+    outage_duration_samples: [24, 48, 96]
+
+  # 20-23: Corruptions & Digitization Errors
+  corrupted_observations:
+    bit_flip_prob: 0.05
+    sentinel_values: [-999.0, 9999.0, 0.0, -99.9]
+
+  timestamp_problems:
+    jitter_seconds: [-1800, 3600]
+    out_of_order_prob: 0.05
+
+  duplicate_readings:
+    repeat_count: [2, 3, 5]
+
+  quantization_stair_step:
+    coarse_step: {temperature: 2.0, pressure: 5.0, humidity: 10.0}
+
+  # 24-26: Intermittent & Multi-Sensor
+  intermittent_sensor_failure:
+    cycle_on_samples: 6
+    cycle_off_samples: 4
+    fault_type: "dead_zero"
+
+  recovery_after_failure:
+    fault_duration_samples: 16
+    stabilization_samples: 4
+
+  multi_sensor_simultaneous_failure:
+    sensors: ["temperature", "humidity"]
+    fault_types: ["positive_spike", "humidity_stuck_near_zero"]
