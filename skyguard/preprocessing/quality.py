@@ -62,6 +62,8 @@ class QualityControlEngine:
     def check_series_quality(self, df: pd.DataFrame) -> pd.DataFrame:
         """Processes a time-series dataframe and appends boolean and categorical QC flags."""
         df = df.copy()
+        if "timestamp" in df.columns and not pd.api.types.is_datetime64_any_dtype(df["timestamp"]):
+            df["timestamp"] = pd.to_datetime(df["timestamp"])
         
         # 1. Range limit flags
         temp_valid = (df["temperature"] >= self.temp_min_c) & (df["temperature"] <= self.temp_max_c)
