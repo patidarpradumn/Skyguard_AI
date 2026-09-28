@@ -34,16 +34,15 @@ Yeh file complete phase-wise status aur test verification record karti hai.
 | **Phase 15**| Production FastAPI REST & WebSocket API | ✅ COMPLETED | ✅ PASSED | `skyguard/api/` Endpoints `/ingest`, `/predict`, `/simulate-anomaly`, `/ws/live` stream |
 | **Phase 16**| Edge AI & ESP32 Inference Generator | ✅ COMPLETED | ✅ PASSED | `skyguard/edge/` Pure C99 standalone library (`skyguard_edge.c`), MicroPython agent (42.5 µs) |
 | **Phase 17**| Controlled Experiments & Ablation Benchmark | ✅ COMPLETED | ✅ PASSED | `experiments/`, `evaluation/` 12 controlled experiments, Ablation study, 4 HTML reports |
-| **Phase 18**| SIH Pitch & Interactive Operational Dashboard | ✅ COMPLETED | ✅ PASSED | `SkyGuard_AI_Dashboard_Guide.pdf`, `SIH_PITCH.md`, `docs/sih_mapping.md`, `references/REFERENCES.md`, 10-view Web Dashboard, **Enhanced Chart.js Real-time Viewports & Responsive Scaling** |
+| **Phase 18**| SIH Pitch & Interactive Operational Dashboard | ✅ COMPLETED | ✅ PASSED | `SIH_PITCH.md`, `docs/sih_mapping.md`, `docs/ESP32_SETUP.md`, `references/REFERENCES.md`, 10-view Web Dashboard, **Enhanced Chart.js Real-time Viewports & Responsive Scaling** |
 
 ---
 
 ## 📄 Key Project Files
-- `SkyGuard_AI_Complete_Dashboard_Explanation_Guide.pdf` : 12-Page Master Study & Presentation Guide covering all 10 views, physics equations, pitch scripts, and Docker architecture.
-- `SkyGuard_AI_Dashboard_Guide.pdf` : Complete presentation guide with all embedded screenshots & jury Q&A.
 - `PROGRESS.md` : Master phase tracking file with seamless resumption instructions.
 - `SIH_PITCH.md` : 3-minute demo script, 5-minute technical explanation, jury Q&A.
 - `docs/sih_mapping.md` : Detailed mapping to all 8 SIH evaluation criteria.
+- `docs/ESP32_SETUP.md` : Microcontroller firmware compilation, wiring pinouts & flashing guide.
 - `references/REFERENCES.md` : Peer-reviewed meteorological and ML citations.
 
 ---

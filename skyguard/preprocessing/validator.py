@@ -18,6 +18,8 @@ class DataValidationPipeline:
         """Executes full preprocessing pipeline on incoming observations."""
         # 1. Standardize units & clean sentinels
         df = self.normalizer.standardize_units(df)
+        if "timestamp" in df.columns and not pd.api.types.is_datetime64_any_dtype(df["timestamp"]):
+            df["timestamp"] = pd.to_datetime(df["timestamp"])
 
         # 2. Sort by station and timestamp
         df = df.sort_values(by=["station_id", "timestamp"]).reset_index(drop=True)
