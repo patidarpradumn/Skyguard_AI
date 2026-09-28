@@ -1,0 +1,12 @@
+{
+  "model": "LightGBM Fault Classifier",
+  "test_set_size": 2875,
+  "accuracy": 0.9979130434782608,
+  "precision": 1.0,
+  "recall": 0.9979130434782608,
+  "f1_score": 0.9989554317548747,
+  "roc_auc": NaN,
+  "evaluation_type": "unseen test set / controlled experiment",
+  "validation_status": "model-level evaluation",
+  "field_validation_status": "ongoing"
+}

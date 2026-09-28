@@ -332,6 +332,10 @@ async def websocket_live_stream(websocket: WebSocket):
         runner = ScenarioRunner(seed=42)
         stream_df = runner.generate_benchmark_dataset(n_days=2)
         enriched_stream = state.pipeline.process_dataframe(stream_df)
+        
+        # Sort by timestamp to interleave station data chronologically
+        if "timestamp" in enriched_stream.columns:
+            enriched_stream = enriched_stream.sort_values("timestamp")
 
         for _, row in enriched_stream.iterrows():
             r = row.to_dict()
