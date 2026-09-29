@@ -3,6 +3,8 @@
 **Ministry / Department:** Ministry of Earth Sciences (MoES) / India Meteorological Department (IMD)  
 **Strict Raw Constraint:** Temperature (°C), Atmospheric Pressure (hPa), Relative Humidity (%) ONLY.
 
+**🎥 [Watch our MVP Demo Video on YouTube](https://youtu.be/ZW5lcXnuPuA)**
+
 ---
 
 ## 🚨 Problem Statement
@@ -36,6 +38,8 @@ flags anomalies with explainability, and self-heals data gaps via Kalman filteri
 ---
 
 ## 📸 Visual Demos & Operational Views
+
+> **🎥 MVP Demo Video:** [Watch our full system demonstration on YouTube](https://youtu.be/ZW5lcXnuPuA)
 
 ### 1. Unified Operational Dashboard
 ![Operational Dashboard](docs/screenshots/Dashboard.png)
