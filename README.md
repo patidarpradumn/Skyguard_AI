@@ -1,7 +1,8 @@
 # 🛡️ SkyGuard AI - Intelligent Anomaly Detection & Self-Healing for AWS
 **Smart India Hackathon Problem Statement:** SIH26073  
 **Ministry / Department:** Ministry of Earth Sciences (MoES) / India Meteorological Department (IMD)  
-**Strict Raw Constraint:** Temperature (°C), Atmospheric Pressure (hPa), Relative Humidity (%) ONLY.
+**Strict Raw Constraint:** Temperature (°C), Atmospheric Pressure (hPa), Relative Humidity (%) ONLY.  
+[![YouTube Video Demo](https://img.shields.io/badge/YouTube-Video%20Demo-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=ZW5lcXnuPuA)
 
 ---
 
@@ -32,6 +33,15 @@ flags anomalies with explainability, and self-heals data gaps via Kalman filteri
 | **Overall MVP** | **✅ Ready** | **90%** |
 
 *Last Updated: September 2026*
+
+---
+
+## 🎬 Live MVP Video Demonstration
+
+[![Watch SkyGuard AI MVP Video Demo](https://img.youtube.com/vi/ZW5lcXnuPuA/hqdefault.jpg)](https://www.youtube.com/watch?v=ZW5lcXnuPuA)
+
+> 📺 **Watch Full Demonstration on YouTube:** [https://www.youtube.com/watch?v=ZW5lcXnuPuA](https://www.youtube.com/watch?v=ZW5lcXnuPuA)  
+> *Complete end-to-end walkthrough covering: Real-time multi-station telemetry ingestion, deterministic thermodynamic verification, multi-class LightGBM fault classification, TreeSHAP diagnostic explainability, Kalman state-space self-healing, and ESP32 edge deployment.*
 
 ---
 
